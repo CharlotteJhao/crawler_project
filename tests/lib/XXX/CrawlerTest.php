@@ -55,4 +55,25 @@ class CrawlerTest extends \PHPUnit_Framework_TestCase
         $c->expects($this->once())->method('getChartData');
         $c->getChartList();
     }
+
+    public function testGetChartDate()
+    {
+        $p = $this->getMockBuilder('XXX\Parser\Billboard')
+            ->setMethods(['getChartDate'])->getMock();
+        $p->expects($this->once())
+            ->method('getChartDate')
+            ->with('html_obj')
+            ->willReturn(1457712000);
+
+        $c = $this->getMockBuilder('XXX\Crawler')
+            ->setMethods([
+                'getParser',
+                'getHtmlObj'
+            ])->getMock();
+        $c->setParser($p);
+        $c->expects($this->once())->method('getParser')->wiLLReturn($p);
+        $c->expects($this->once())->method('getHtmlObj')->willReturn('html_obj');
+
+        $c->getChartDate();
+    }
 }

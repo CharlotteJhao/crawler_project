@@ -11,6 +11,7 @@ class Crawler
 
     public function getChartDate()
     {
+        return $this->getParser()->getChartDate($this->getHtmlObj());
     }
 
     public function getChartData()
