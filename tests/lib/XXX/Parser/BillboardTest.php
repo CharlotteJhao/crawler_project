@@ -33,4 +33,10 @@ class BillboardTest extends \PHPUnit_Framework_TestCase
         $b = new Billboard();
         $this->assertEquals(1, $b->getPosition($this->phpQueryObj));
     }
+
+    public function testGetArtist()
+    {
+        $b = new Billboard();
+        $this->assertEquals('Rihanna Featuring Drake', $b->getArtist($this->phpQueryObj));
+    }
 }

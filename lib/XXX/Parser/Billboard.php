@@ -21,6 +21,7 @@ class Billboard implements IParser
 
     public function getArtist($pq)
     {
+        return trim($pq->find('.chart-row__title a')->text());
     }
 
     public function getTitle($pq)

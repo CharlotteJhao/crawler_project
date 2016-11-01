@@ -33,4 +33,10 @@ class OfficialTest extends \PHPUnit_Framework_TestCase
         $o = new Official();
         $this->assertEquals(1, $o->getPosition($this->phpQueryObj));
     }
+
+    public function testGetArtist()
+    {
+        $o = new Official();
+        $this->assertEquals('LUKAS GRAHAM', $o->getArtist($this->phpQueryObj));
+    }
 }

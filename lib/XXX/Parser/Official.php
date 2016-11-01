@@ -22,6 +22,7 @@ class Official implements IParser
 
     public function getArtist($pq)
     {
+        return trim($pq->find('td div.track div.title-artist div.artist a')->text());
     }
 
     public function getTitle($pq)
