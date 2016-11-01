@@ -26,6 +26,7 @@ class Billboard implements IParser
 
     public function getTitle($pq)
     {
+        return trim($pq->find('.chart-row__title h2')->text());
     }
 
     public function getSpotifyId($pq)

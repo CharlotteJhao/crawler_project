@@ -27,6 +27,7 @@ class Official implements IParser
 
     public function getTitle($pq)
     {
+        return trim($pq->find('td div.track div.title-artist div.title a')->text());
     }
 
     public function getSpotifyId($pq)
