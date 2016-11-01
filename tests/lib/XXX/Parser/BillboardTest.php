@@ -45,4 +45,10 @@ class BillboardTest extends \PHPUnit_Framework_TestCase
         $b = new Billboard();
         $this->assertEquals('Work', $b->getTitle($this->phpQueryObj));
     }
+
+    public function testGetSpotifyId()
+    {
+        $b = new Billboard();
+        $this->assertEquals('50R3hdsZQeg3k8zJdVphSZ', $b->getSpotifyId($this->phpQueryObj));
+    }
 }

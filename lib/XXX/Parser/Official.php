@@ -32,6 +32,10 @@ class Official implements IParser
 
     public function getSpotifyId($pq)
     {
+        $position = $this->getPosition($pq);
+        $str = $pq->find("tr.actions-view-listen-{$position} a.spotify")->attr('href');
+        $arr = explode("/", $str);
+        return end($arr);
     }
 
     public function getRowData($pq, $meta_type)

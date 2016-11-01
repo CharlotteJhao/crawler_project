@@ -45,4 +45,10 @@ class OfficialTest extends \PHPUnit_Framework_TestCase
         $o = new Official();
         $this->assertEquals('7 YEARS', $o->getTitle($this->phpQueryObj));
     }
+
+    public function testGetSpotifyId()
+    {
+        $o = new Official();
+        $this->assertEquals('2vDT1uU6hZgdp3PbWGr0Xy', $o->getSpotifyId($this->phpQueryObj));
+    }
 }

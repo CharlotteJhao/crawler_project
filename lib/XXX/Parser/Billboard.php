@@ -31,6 +31,9 @@ class Billboard implements IParser
 
     public function getSpotifyId($pq)
     {
+        $str = $pq->find('.chart-row__player-content a.chart-row__player-link')->attr('href');
+        $arr = explode(":", $str);
+        return end($arr);
     }
 
     public function getRowData($pq, $meta_type)
