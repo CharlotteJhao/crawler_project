@@ -2,17 +2,19 @@
 
 namespace XXX;
 
-abstract class Crawler
+class Crawler
 {
     protected $htmlObj;
     private $domain;
     private $chartType;
 
-    abstract public function getChartTypeTarget();
+    public function getChartDate()
+    {
+    }
 
-    abstract public function getChartDate();
-
-    abstract public function getChartData($chart_type);
+    public function getChartData()
+    {
+    }
 
     public function getDomain()
     {
@@ -34,15 +36,11 @@ abstract class Crawler
         $this->chartType = $type;
     }
 
-    public function getChartList($chart_type)
+    public function getChartList()
     {
-        if (!array_key_exists($chart_type, $this->getChartTypeTarget())) {
-            return [];
-        }
+        $this->setHtmlObj($this->domain);
 
-        $this->setHtmlObj($this->getDomain() . $this->getChartTypeTarget()[$chart_type]);
-
-        return $this->getChartData($chart_type);
+        return $this->getChartData();
     }
 
     public function getHtmlObj()
