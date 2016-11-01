@@ -5,14 +5,23 @@ namespace XXX;
 abstract class Crawler
 {
     protected $htmlObj;
-
-    abstract public function getDomain();
+    private $domain;
 
     abstract public function getChartTypeTarget();
 
     abstract public function getChartDate();
 
     abstract public function getChartData($chart_type);
+
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+    }
 
     public function getChartList($chart_type)
     {

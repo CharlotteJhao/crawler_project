@@ -4,11 +4,22 @@ namespace XXX;
 
 class CrawlerTest extends \PHPUnit_Framework_TestCase
 {
+    public function testGetDomain()
+    {
+        $c = $this->getMockBuilder('XXX\Crawler')
+            ->setMethods([
+                'getChartDate',
+                'getChartData',
+                'curlRequest'
+            ])->getMock();
+        $c->setDomain('test_url');
+        $this->assertEquals('test_url', $c->getDomain());
+    }
+
     public function testSetAndGetHtmlObj()
     {
         $c = $this->getMockBuilder('XXX\Crawler')
             ->setMethods([
-                'getDomain',
                 'getChartTypeTarget',
                 'getChartDate',
                 'getChartData',
@@ -32,7 +43,6 @@ class CrawlerTest extends \PHPUnit_Framework_TestCase
             ->setMethods([
                 'getChartDate',
                 'getChartData',
-                'getDomain',
                 'getChartTypeTarget',
                 'setHtmlObj'
             ])->getMock();
