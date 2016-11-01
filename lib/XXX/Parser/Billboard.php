@@ -38,5 +38,23 @@ class Billboard implements IParser
 
     public function getRowData($pq, $meta_type)
     {
+        $position = $this->getPosition($pq);
+        $artist = $this->getArtist($pq);
+
+        //get song/album name
+        $title = $this->getTitle($pq);
+
+        $spotify_id = "{$meta_type}:" . $this->getSpotifyId($pq);
+
+        if (false === array_search('', [$position, $title])) {
+            return [
+                'position'   => $position,
+                $meta_type  => $title,
+                'artist'     => $artist,
+                'spotify_id' => $spotify_id
+            ];
+        } else {
+            return false;
+        }
     }
 }

@@ -40,5 +40,23 @@ class Official implements IParser
 
     public function getRowData($pq, $meta_type)
     {
+        $position = $this->getPosition($pq);
+        $artist = $this->getArtist($pq);
+
+        //get song/album name
+        $title = $this->getTitle($pq);
+
+        $spotify_id = "{$meta_type}:" . $this->getSpotifyId($pq);
+
+        if ($position > 0) {
+            return [
+                'position'  => $position,
+                $meta_type => ucfirst(strtolower($title)),
+                'artist'    => ucwords(strtolower($artist)),
+                'spotify_id' => $spotify_id
+            ];
+        } else {
+            return false;
+        }
     }
 }

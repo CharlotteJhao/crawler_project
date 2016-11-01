@@ -51,4 +51,18 @@ class BillboardTest extends \PHPUnit_Framework_TestCase
         $b = new Billboard();
         $this->assertEquals('50R3hdsZQeg3k8zJdVphSZ', $b->getSpotifyId($this->phpQueryObj));
     }
+
+    public function testGetRowData()
+    {
+        $b = new Billboard();
+        $this->assertEquals(
+            [
+                'position' => "1",
+                'track' => "Work",
+                'artist' => "Rihanna Featuring Drake",
+                'spotify_id' => "track:50R3hdsZQeg3k8zJdVphSZ",
+            ],
+            $b->getRowData($this->phpQueryObj, 'track')
+        );
+    }
 }

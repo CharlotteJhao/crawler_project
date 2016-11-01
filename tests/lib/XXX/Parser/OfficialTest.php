@@ -51,4 +51,18 @@ class OfficialTest extends \PHPUnit_Framework_TestCase
         $o = new Official();
         $this->assertEquals('2vDT1uU6hZgdp3PbWGr0Xy', $o->getSpotifyId($this->phpQueryObj));
     }
+
+    public function testGetRowData()
+    {
+        $o = new Official();
+        $this->assertEquals(
+            [
+                'position' => "1",
+                'track' => "7 years",
+                'artist' => "Lukas Graham",
+                'spotify_id' => "track:2vDT1uU6hZgdp3PbWGr0Xy",
+            ],
+            $o->getRowData($this->phpQueryObj, 'track')
+        );
+    }
 }
