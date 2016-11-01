@@ -16,6 +16,18 @@ class CrawlerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('test_url', $c->getDomain());
     }
 
+    public function testGetChartType()
+    {
+        $c = $this->getMockBuilder('XXX\Crawler')
+            ->setMethods([
+                'getChartDate',
+                'getChartData',
+                'curlRequest'
+            ])->getMock();
+        $c->setChartType('type');
+        $this->assertEquals('type', $c->getChartType());
+    }
+
     public function testSetAndGetHtmlObj()
     {
         $c = $this->getMockBuilder('XXX\Crawler')

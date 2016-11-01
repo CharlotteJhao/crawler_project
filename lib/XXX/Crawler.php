@@ -6,6 +6,7 @@ abstract class Crawler
 {
     protected $htmlObj;
     private $domain;
+    private $chartType;
 
     abstract public function getChartTypeTarget();
 
@@ -21,6 +22,16 @@ abstract class Crawler
     public function setDomain($domain)
     {
         $this->domain = $domain;
+    }
+
+    public function getChartType()
+    {
+        return $this->chartType;
+    }
+
+    public function setChartType($type)
+    {
+        $this->chartType = $type;
     }
 
     public function getChartList($chart_type)
