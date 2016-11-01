@@ -16,6 +16,7 @@ class Billboard implements IParser
 
     public function getPosition($pq)
     {
+        return trim($pq->find('.chart-row__rank span.chart-row__current-week')->text());
     }
 
     public function getArtist($pq)

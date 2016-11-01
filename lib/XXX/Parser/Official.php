@@ -17,6 +17,7 @@ class Official implements IParser
 
     public function getPosition($pq)
     {
+        return (int) trim($pq->find('td span.position')->text());
     }
 
     public function getArtist($pq)
