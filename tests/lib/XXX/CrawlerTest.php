@@ -6,7 +6,12 @@ class CrawlerTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetDomain()
     {
-        $c = new Crawler();
+        $c = $this->getMockBuilder('XXX\Crawler')
+            ->setMethods(['setHtmlObj'])->getMock();
+        $c->expects($this->once())
+            ->method('setHtmlObj')
+            ->with('test_url');
+
         $c->setDomain('test_url');
         $this->assertEquals('test_url', $c->getDomain());
     }

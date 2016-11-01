@@ -24,6 +24,7 @@ class Crawler
     public function setDomain($domain)
     {
         $this->domain = $domain;
+        $this->setHtmlObj($domain);
     }
 
     public function getChartType()
