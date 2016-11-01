@@ -4,6 +4,13 @@ namespace XXX;
 
 class CrawlerTest extends \PHPUnit_Framework_TestCase
 {
+    public function testSetAndGetParser()
+    {
+        $c = new Crawler();
+        $c->setParser(new \XXX\Parser\Billboard());
+        $this->assertEquals(new \XXX\Parser\Billboard(), $c->getParser());
+    }
+
     public function testGetDomain()
     {
         $c = $this->getMockBuilder('XXX\Crawler')

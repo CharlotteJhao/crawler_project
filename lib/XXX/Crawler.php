@@ -7,6 +7,7 @@ class Crawler
     protected $htmlObj;
     private $domain;
     private $chartType;
+    private $parser;
 
     public function getChartDate()
     {
@@ -53,6 +54,16 @@ class Crawler
     {
         $content = $this->curlRequest($url);
         $this->htmlObj = \phpQuery::newDocumentHTML($content);
+    }
+
+    public function getParser()
+    {
+        return $this->parser;
+    }
+
+    public function setParser($parser)
+    {
+        $this->parser = $parser;
     }
 
     public function curlRequest($url)
