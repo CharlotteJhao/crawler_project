@@ -11,6 +11,7 @@ class Billboard implements IParser
 
     public function getChartDate($htmlObj)
     {
+        return strtotime($htmlObj->find('nav.chart-nav time')->attr('datetime'));
     }
 
     public function getPosition($pq)

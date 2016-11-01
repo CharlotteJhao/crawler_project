@@ -11,6 +11,8 @@ class Official implements IParser
 
     public function getChartDate($htmlObj)
     {
+        list(, $chart_date) = explode(" - ", $htmlObj->find('p.article-date')->eq(0)->text());
+        return strtotime(trim($chart_date));
     }
 
     public function getPosition($pq)
