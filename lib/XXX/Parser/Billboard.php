@@ -6,6 +6,7 @@ class Billboard implements IParser
 {
     public function getHtmlObject($htmlObj)
     {
+        return $htmlObj->find('article.chart-row');
     }
 
     public function getChartDate($htmlObj)
