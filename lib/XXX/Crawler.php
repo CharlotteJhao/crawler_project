@@ -41,9 +41,18 @@ class Crawler
 
     public function getChartList()
     {
-        $this->setHtmlObj($this->domain);
+        $tmpArr = [];
+        $chart_type = $this->getChartType();
+        $parser = $this->getParser();
 
-        return $this->getChartData();
+        foreach ($parser->getHtmlObject($this->getHtmlObj()) as $v) {
+            $row = $parser->getRowData(pq($v), $chart_type);
+            if ($row) {
+                $tmpArr[] = $row;
+            }
+        }
+
+        return $tmpArr;
     }
 
     public function getHtmlObj()

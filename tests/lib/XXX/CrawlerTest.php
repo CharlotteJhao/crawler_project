@@ -45,14 +45,32 @@ class CrawlerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetChartList()
     {
+        $content = file_get_contents(__DIR__ . '/Parser/billboard_song.html');
+        $html_obj = \phpQuery::newDocumentHTML($content);
+        $pq = pq($html_obj{0});
+
+        $p = $this->getMockBuilder('XXX\Parser\Billboard')
+            ->setMethods(['getHtmlObject', 'getRowData', 'getParser'])->getMock();
+        $p->expects($this->once())
+            ->method('getHtmlObject')
+            ->with($html_obj)
+            ->willReturn([$html_obj{0}]);
+        $p->expects($this->any())
+            ->method('getRowData')
+            ->with($pq, 'track')
+            ->willReturn([]);
+
         $c = $this->getMockBuilder('XXX\Crawler')
             ->setMethods([
-                'getChartData',
-                'setHtmlObj'
+                'getParser',
+                'getChartType',
+                'getHtmlObj'
             ])->getMock();
+        $c->setParser($p);
+        $c->expects($this->once())->method('getParser')->willReturn($p);
+        $c->expects($this->once())->method('getChartType')->willReturn('track');
+        $c->expects($this->once())->method('getHtmlObj')->willReturn($html_obj);
 
-        $c->expects($this->once())->method('setHtmlObj');
-        $c->expects($this->once())->method('getChartData');
         $c->getChartList();
     }
 
