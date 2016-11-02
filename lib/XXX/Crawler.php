@@ -14,10 +14,6 @@ class Crawler
         return $this->getParser()->getChartDate($this->getHtmlObj());
     }
 
-    public function getChartData()
-    {
-    }
-
     public function getDomain()
     {
         return $this->domain;

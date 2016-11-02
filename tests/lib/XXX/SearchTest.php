@@ -1,6 +1,6 @@
 <?php
 
-namespace XXX\Crawler;
+namespace XXX;
 
 class SearchTest extends \PHPUnit_Framework_TestCase
 {
